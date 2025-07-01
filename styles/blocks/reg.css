@@ -1,0 +1,262 @@
+/* Основные стили */
+.reg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 20px;
+  }
+
+  .reg__block {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .reg__block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .reg__title {
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .reg__subtitle {
+    color: #7f8c8d;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 14px;
+  }
+
+  /* Стили для инпутов */
+  .input-wrapper {
+    position: relative;
+    margin-bottom: 25px;
+  }
+
+  .reg__input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+  }
+
+  .reg__input:focus {
+    outline: none;
+    background-color: white;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  }
+
+  .input-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #3498db;
+    transition: width 0.3s ease;
+  }
+
+  .reg__input:focus ~ .input-border {
+    width: 100%;
+  }
+
+  /* Индикатор сложности пароля */
+  .password-strength {
+    margin-top: 5px;
+    height: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  .strength-bar {
+    height: 3px;
+    border-radius: 3px;
+    width: 0;
+    transition: width 0.3s ease, background-color 0.3s ease;
+  }
+
+  .strength-text {
+    margin-left: 10px;
+    font-size: 12px;
+    color: #7f8c8d;
+    margin-top: 1rem;
+  }
+
+  /* Стили для кнопки */
+  .btn__product-submit {
+    position: relative;
+    background: var(--color-title-blue);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  .btn__product-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(41, 128, 185, 0.4);
+  }
+
+  .btn__product-submit:active {
+    transform: translateY(0);
+  }
+
+  .message-box {
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--color-title-blue);
+    font-size: 1.2rem;
+    /* По умолчанию можно скрыть, если не нужно пустое место */
+    /* display: none; */
+}
+
+/* Убедитесь, что у вас есть стили для .success-message и .error-message, например: */
+.success-message {
+  /* ... ваши стили для успеха (зеленый фон, текст и т.д.) ... */
+  background-color: #e6fffa;
+  color: #004d40;
+  border-left: 5px solid #00796b;
+  /* Если был display: none; у .message-box, то здесь нужно его показать */
+  display: block; /* или flex, grid и т.д. */
+}
+
+.error-message {
+  /* ... ваши стили для ошибки (красный фон, текст и т.д.) ... */
+  background-color: #f8d7da;
+  color: #721c24;
+  border-left: 5px solid #dc3545;
+  /* Если был display: none; у .message-box, то здесь нужно его показать */
+  display: block; /* или flex, grid и т.д. */
+}
+
+/* Стили для индикатора сложности пароля (пример) */
+.password-strength-container {
+    margin-top: 5px;
+    height: 20px; /* Высота контейнера для полосы и текста */
+    display: flex;
+    align-items: center;
+}
+.strength-bar-wrapper {
+    flex-grow: 1;
+    height: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    overflow: hidden; /* Чтобы скругление работало с внутренней полосой */
+    margin-right: 10px;
+}
+.strength-bar {
+    height: 100%;
+    width: 0%; /* Начальная ширина */
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+.strength-bar.weak { background-color: #ff4d4d; }
+.strength-bar.medium { background-color: #ffcc00; }
+.strength-bar.strong { background-color: #4CAF50; }
+
+.strength-text {
+    font-size: 0.9em;
+    min-width: 60px; /* Чтобы текст "Средний" не переносился */
+}
+
+  /* Анимация появления формы */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .reg__block {
+    animation: fadeInUp 0.5s ease forwards;
+  }
+
+.reg__submit-block {
+    display: flex;
+    margin-bottom: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.reg__form-fx {
+    max-width: 720px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form__text-reg {
+    margin-left: 1rem;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 736px) {
+    .reg {
+        min-height: 850px;
+    }
+
+    .form__text-reg {
+        text-align: center;
+    }
+
+    .reg__block {
+        max-width: 100%;
+        height: 100%;
+    }
+
+    .reg__form {
+        max-width: 100%;
+        align-items: center;
+    }
+
+    .reg__form-fx {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn__product-submit {
+        margin-bottom: 2rem;
+    }
+
+    .form__text {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    .reg__input {
+        margin-left: 0;
+    }
+
+    .reg__submit-block {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
